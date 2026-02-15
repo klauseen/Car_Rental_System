@@ -1,5 +1,6 @@
 package rent;
 
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -24,19 +26,22 @@ public class Rental extends JFrame {
 	Connection con;
 
 	public Rental() {
-	    //setDefaultCloseOperation(JFrame.);
-	    setBounds(100, 100, 905, 557);
-	    contentPane = new JPanel();
-	    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-	    contentPane.setLayout(null);
-	    setContentPane(contentPane);
+		setTitle("Rental Records");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		setExtendedState(JFrame.NORMAL);
+		setSize(900 , 600);
+		setLocationRelativeTo(null);
 
 	    // main panel
-	    JPanel panel = new JPanel();
-	    panel.setBorder(new TitledBorder(null, "Rental", TitledBorder.LEADING, TitledBorder.BELOW_TOP, null, null));
-	    panel.setBounds(10, 10, 859, 500);
-	    panel.setLayout(null);
-	    contentPane.add(panel);
+	    contentPane = new JPanel(new BorderLayout(10 , 10));
+	    contentPane.setBorder(new EmptyBorder(10 , 10 , 10 , 10));
+	    setContentPane(contentPane);
+	    
+	    JPanel mainPanel = new JPanel(new BorderLayout(10 , 10));
+	    mainPanel.setBorder(new EtchedBorder());
+	    contentPane.add(mainPanel , BorderLayout.CENTER);
+	    
 
 	    // table model
 	    model = new DefaultTableModel(
@@ -49,8 +54,7 @@ public class Rental extends JFrame {
 
 	    // JPanel for the table to show the header
 	    JScrollPane scrollPane = new JScrollPane(tblRented);
-	    scrollPane.setBounds(50, 50, 750, 400);
-	    panel.add(scrollPane);
+	    mainPanel.add(scrollPane , BorderLayout.CENTER);
 
 	    // Loads data from DB
 	    loadRentals();
