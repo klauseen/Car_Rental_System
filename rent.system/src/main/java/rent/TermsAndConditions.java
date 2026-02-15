@@ -45,24 +45,13 @@ public class TermsAndConditions extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		scrollPane.setColumnHeaderView(lblNewLabel);
 		
-		JButton btnAccept = new JButton("Accept");
-		btnAccept.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnAccept.setBounds(131, 485, 85, 21);
-		contentPane.add(btnAccept);
-		btnAccept.addActionListener(e ->{
-		Customer cust = new Customer();
-	    cust.setVisible(true);
-	    this.dispose();
-		});
-		
-		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnCancel.setBounds(327, 485, 85, 21);
-		contentPane.add(btnCancel);
-		btnCancel.addActionListener(e ->{
-			Login log = new Login();
-			log.setVisible(true);
+		JButton btnOkay = new JButton("Okay");
+		btnOkay.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnOkay.setBounds(235, 486, 127, 23);
+		contentPane.add(btnOkay);
+		btnOkay.addActionListener(e ->{
 			this.dispose();
 		});
+
 	}
 }
